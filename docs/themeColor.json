@@ -1,0 +1,15 @@
+[
+  {
+    "_id": {
+      "$oid": "ObjectId"
+    },
+    "name": "",
+    "colorBG": "",
+    "colorLayout": "",
+    "colorBtn": "",
+    "ColorTextPrincipal": "",
+    "colorTextSecondaire": "",
+    "colorBox": "",
+    "colorLink": ""
+  }
+]

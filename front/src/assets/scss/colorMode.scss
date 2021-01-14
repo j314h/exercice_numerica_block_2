@@ -1,0 +1,49 @@
+//les background
+.cbglayoutd {
+  background-color: $colorLayoutDark;
+}
+.cbglayoutl {
+  background-color: $colorLayoutLight;
+}
+.cbgcontentd {
+  background-color: $colorFondDark;
+}
+.cbgcontentl {
+  background-color: $colorFondLight;
+}
+.cbgorange svg path {
+  fill: $colorAction;
+}
+
+//text action
+.ctaction {
+  color: $colorAction;
+}
+.ctaction:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+//text content
+.ctprincipald {
+  color: $colorTextLight;
+}
+.ctprincipall {
+  color: $colorTextDark;
+}
+
+//color text menu
+.ctmenu {
+  color: $colorTextLight;
+}
+.ctmenu:hover {
+  color: $colorAction;
+}
+
+//background text menu active
+.cbgtmenudactive {
+  background-color: $colorFondDark;
+}
+.cbgtmenulactive {
+  background-color: $colorFondLight;
+}
