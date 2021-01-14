@@ -11,6 +11,18 @@
 .cbgcontentl {
   background-color: $colorFondLight;
 }
+.cbgorange svg path {
+  fill: $colorAction;
+}
+
+//text action
+.ctaction {
+  color: $colorAction;
+}
+.ctaction:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
 
 //text content
 .ctprincipald {

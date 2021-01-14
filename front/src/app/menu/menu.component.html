@@ -2,7 +2,7 @@
   <nav class="box_menu_principal">
     <!-- img profil john haimez -->
     <div class="box_img_menu">
-      <a>
+      <a [routerLink]="['/']">
         <svg
           width="60"
           height="68"
@@ -33,7 +33,12 @@
     <!-- menu principal -->
     <ul class="menu_principal">
       <li>
-        <a class="ctmenu" [routerLink]="['/']">
+        <a
+          class="ctmenu upper"
+          [routerLink]="['/']"
+          routerLinkActive="activeMenu"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
           <svg
             width="15"
             height="17"
@@ -46,11 +51,16 @@
               fill="white"
             />
           </svg>
-          John Haimez</a
+          Profil</a
         >
       </li>
       <li>
-        <a class="ctmenu">
+        <a
+          class="ctmenu upper"
+          [routerLink]="['competences']"
+          routerLinkActive="activeMenu"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
           <svg
             width="15"
             height="15"
@@ -67,7 +77,7 @@
         >
       </li>
       <li>
-        <a class="ctmenu">
+        <a class="ctmenu upper">
           <svg
             width="15"
             height="13"
@@ -84,7 +94,7 @@
         >
       </li>
       <li>
-        <a class="ctmenu">
+        <a class="ctmenu upper">
           <svg
             width="15"
             height="13"
@@ -119,7 +129,7 @@
               fill="white"
             />
           </svg>
-          Activer mode light
+          Activer mode clair
         </button>
       </li>
     </div>
@@ -129,7 +139,11 @@
     <ul class="list_link">
       <li>
         <!-- connexion admin -->
-        <a>
+        <a
+          [routerLink]="['connexion']"
+          routerLinkActive="cbgorange"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
           <svg
             width="40"
             height="40"

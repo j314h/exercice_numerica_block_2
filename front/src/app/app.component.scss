@@ -4,7 +4,10 @@
 }
 .content {
   width: 100%;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   height: 100%;
-  flex: 2;
+  flex: 5;
+  position: relative;
+  padding: 20px;
 }

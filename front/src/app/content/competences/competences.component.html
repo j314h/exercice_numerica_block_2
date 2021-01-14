@@ -1,0 +1,44 @@
+<div class="global_box_competence">
+  <!-- sub title -->
+  <h2>Compétences</h2>
+  <div class="containe_competence">
+    <!-- box competence -->
+    <div class="box_competence cbglayoutd">
+      <!-- competence -->
+      <div class="block_competence">
+        <h3>Front-end</h3>
+        <div class="competence">
+          <div class="box_img">
+            <img src="../../../assets/img/angular-seeklogo.com_.svg" />
+            <img src="../../../assets/img/vuejs.svg" />
+            <img src="../../../assets/img/vuejs.svg" />
+          </div>
+          <p>
+            Angular et VueJS sont pour moi de véritables coups de cœur.
+            Passionné par ces technologies, j’ai commencé mon apprentissage en
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- box competence boucle -->
+    <div
+      *ngFor="let item of competences; let index = index"
+      class="box_competence cbglayoutd"
+    >
+      <!-- competence -->
+      <div class="block_competence">
+        <h3>{{ item.title }}</h3>
+        <div class="competence">
+          <div class="box_img">
+            <img src="../../../assets/img/angular-seeklogo.com_.svg" />
+            <img src="../../../assets/img/vuejs.svg" />
+            <img src="../../../assets/img/vuejs.svg" />
+          </div>
+          <p>
+            {{ item.text }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
