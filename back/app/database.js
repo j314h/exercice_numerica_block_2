@@ -9,8 +9,12 @@ const optionConnect = {
 
 //connect database
 const connexion = async () => {
-  const db = await mongoose.connect(process.env.URLBDD, optionConnect);
-  db ? console.log("Connexion BDD Portfolio OK") : console.log("Error connect BDD Portfolio");
+  try {
+    const db = await mongoose.connect(process.env.URLBDD, optionConnect);
+    db ? console.log("Connexion BDD Portfolio OK") : console.log("Error connect BDD Portfolio");
+  } catch (e) {
+    console.log(e.message);
+  }
 };
 
 connexion();
