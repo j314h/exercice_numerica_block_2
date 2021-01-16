@@ -30,6 +30,22 @@ img {
   -ms-border-radius: 150px;
   -o-border-radius: 150px;
 }
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+.input_img {
+  margin-bottom: 30px;
+}
 .box_pdf_cv {
   padding: 40px 0 70px 0;
+}
+.box_btn_modifier {
+  text-align: end;
+  padding: 20px;
+}
+.btn_modifier {
+  font-size: 1.8rem;
+  margin-left: auto;
+  margin-top: 20px;
 }

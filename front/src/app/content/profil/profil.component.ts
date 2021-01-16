@@ -1,11 +1,9 @@
+import { Files } from './../../models/File.interface';
 import { Component, OnInit } from '@angular/core';
-
-interface Profil {
-  srcImage: String;
-  text1: String;
-  text2: String;
-  text3: String;
-}
+import { Profil } from './../../models/profil.interface';
+import { CookieService } from 'ngx-cookie-service';
+import { HttpClient } from '@angular/common/http';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-profil',
@@ -14,31 +12,83 @@ interface Profil {
 })
 export class ProfilComponent implements OnInit {
   public profil: Profil;
+  public imgProfil: FormData;
+  public profilImage: string;
+  public areaProfil: FormGroup;
+  public connected: Boolean;
+  public infoUpdateProfil: string;
 
-  constructor() {
-    this.profil = {
-      srcImage: '../../../assets/img/picture-profil-2017.png',
-      text1: `Après une formation full Stack Javascript de 3 mois dans le développement
-      web à l’école Oclock en télé présentiel. J’ai continué ma formation chez SEM
-      Numerica pour une durée de 6 mois. Actuellement en pleine formation je suis
-      à la recherche d’un stage de 2 mois afin d’obtenir mon titre Professionnel
-      de développeur web et web mobile.`,
-      text2: `Je suis quelqu'un de motivé et curieux faisant toujours preuve d'une grande
-      détermination. Explorer de nouvelles opportunités, apprendre de nouvelles
-      compétences, rencontrer de nouvelles personnes, tout cela a toujours été
-      naturel chez moi, aussi bien dans la sphère personnelle que professionnelle.
-      Étant autodidacte en développement lors de mes temps libres, j'ai décidé de
-      faire une reconversion afin d'exercer un métier que j'aime et qui me
-      passionne.`,
-      text3: `J'ai commencé ma reconversion professionnelle par la formation Full-Stack JS
-      chez Oclock d'une durée de 3 mois. Cette formation fut un véritable succès,
-      j'ai pu approfondir des notions qui on été difficiles à assimiler quand on
-      apprend seul. Suite à cela, je suis rentré chez SEM Numerica pour découvrir
-      d'autres technologies, faire évoluer mes compétences en développement et en
-      gestion de projet afin d'obtenir mon titre professionnel "développeur web et
-      web mobile".`,
-    };
+  constructor(private http: HttpClient, private cookie: CookieService) {}
+
+  //update text for profil in api
+  public updateProfil() {
+    this.http
+      .post<Profil>(
+        'http://localhost:3000/update-profil',
+        this.areaProfil.value,
+        { withCredentials: true }
+      )
+      .subscribe((profil: Profil) => {
+        this.profil = profil;
+        this.initForm(this.profil);
+        this.infoUpdateProfil = 'Update ok';
+      });
+    setTimeout(() => {
+      this.infoUpdateProfil = '';
+    }, 4000);
   }
 
-  ngOnInit(): void {}
+  //load image in formData format
+  public loadImg(file) {
+    console.log('ProfilComponent ~ loadImg ~ file', file);
+    this.imgProfil = new FormData();
+    this.imgProfil.append('profil', file);
+    console.log(
+      'ProfilComponent ~ loadImg ~ this.imgProfil',
+      this.imgProfil.get('profil')
+    );
+  }
+
+  //upload and update image profil
+  public updateImgProfil() {
+    this.http
+      .post<any>('http://localhost:3000/file/profil', this.imgProfil, {
+        withCredentials: true,
+      })
+      .subscribe((response: any) => {
+        this.profilImage = 'http://localhost:3000/images/' + response.fieldName;
+      });
+  }
+
+  //init form for update profil, execute in ngOnInit
+  public initForm(profil: Profil) {
+    this.areaProfil = new FormGroup({
+      _id: new FormControl(profil._id),
+      textPrincipal: new FormControl(profil.textPrincipal),
+      textSecondaire: new FormControl(profil.textSecondaire),
+      textConclusion: new FormControl(profil.textConclusion),
+    });
+  }
+
+  ngOnInit(): void {
+    //get info in profil data base
+    this.http
+      .get<Profil[]>('http://localhost:3000/info-profil')
+      .subscribe((profil: Profil[]) => {
+        this.profil = profil[0];
+        this.initForm(this.profil);
+      });
+
+    this.http
+      .get<Files[]>('http://localhost:3000/files')
+      .subscribe((files: Files[]) => {
+        const imgProfil = files.find((el) => el.name === 'profil');
+        this.profilImage =
+          'http://localhost:3000/images/' + imgProfil.fieldName;
+      });
+
+    //check if user is connected
+    this.connected = this.cookie.check('jwt');
+    //this.connected = true;
+  }
 }

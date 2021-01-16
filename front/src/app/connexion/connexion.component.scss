@@ -1,11 +1,11 @@
 img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50px;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-  -ms-border-radius: 50px;
-  -o-border-radius: 50px;
+  width: 150px;
+  height: 150px;
+  border-radius: 150px;
+  -moz-border-radius: 150px;
+  -ms-border-radius: 150px;
+  -o-border-radius: 150px;
+  -webkit-border-radius: 150px;
 }
 form {
   display: flex;
@@ -32,4 +32,16 @@ h6 {
   display: block;
   padding: 20px;
   font-size: 1.8rem;
+}
+.box_user_connected {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.box_info {
+  padding: 50px 0 20px 0;
+}
+.text_info_build {
+  margin-top: 50px;
+  font-size: 1rem;
 }

@@ -1,20 +1,68 @@
 <div class="profil">
   <!-- title -->
   <h1>John haimez</h1>
+
   <!-- img profil -->
-  <div>
-    <img [src]="profil.srcImage" />
+  <div *ngIf="profil && !connected">
+    <img [src]="profilImage" />
   </div>
+  <!-- update img profil -->
+  <div class="input_img" *ngIf="profil && connected">
+    <form (ngSubmit)="updateImgProfil()">
+      <label class="ctorange">Modifier l'image du profil</label>
+      <input (input)="loadImg($event.target.files[0])" type="file" />
+      <div>
+        <button class="ctaction btn_modifier">Envoyer</button>
+      </div>
+    </form>
+  </div>
+
   <!-- text profil -->
-  <p>
-    {{ profil.text1 }}
+  <p *ngIf="profil && !connected">
+    {{ profil.textPrincipal }}
   </p>
-  <p class="para2">
-    {{ profil.text2 }}
+  <p *ngIf="profil && !connected" class="para2">
+    {{ profil.textSecondaire }}
   </p>
-  <p>
-    {{ profil.text3 }}
+  <p *ngIf="profil && !connected">
+    {{ profil.textConclusion }}
   </p>
+
+  <!-- if connected is true see you textarea for change infosmation of profil -->
+  <div *ngIf="profil && connected">
+    <form (ngSubmit)="updateProfil()" [formGroup]="areaProfil">
+      <div>
+        <textarea
+          formControlName="textPrincipal"
+          class="input"
+          rows="10"
+          cols="70"
+        ></textarea>
+      </div>
+      <div>
+        <textarea
+          formControlName="textSecondaire"
+          class="input"
+          rows="10"
+          cols="70"
+        ></textarea>
+      </div>
+      <div>
+        <textarea
+          formControlName="textConclusion"
+          class="input"
+          rows="10"
+          cols="70"
+        ></textarea>
+      </div>
+      <div class="box_btn_modifier">
+        <button class="ctaction btn_modifier">Modifier</button>
+      </div>
+      <div>
+        <p>{{ infoUpdateProfil }}</p>
+      </div>
+    </form>
+  </div>
   <!-- button access CV pdf -->
   <div class="box_pdf_cv">
     <a class="ctaction" href="#">Voir mon CV</a>

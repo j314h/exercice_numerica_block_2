@@ -7,7 +7,7 @@ const profilController = {
       //if exist this recover automatic error
       //update info profil with id
       const newInfoProfil = await Profils.findByIdAndUpdate(
-        { _id: req.body.id },
+        { _id: req.body._id },
         {
           textPrincipal: req.body.textPrincipal,
           textSecondaire: req.body.textSecondaire,

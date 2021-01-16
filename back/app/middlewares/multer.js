@@ -17,7 +17,7 @@ function fileFilter(req, file, cb) {
 //config multer for upload files
 exports.upload = multer({
   fileFilter,
-  limits: { fileSize: 1000000 },
+  limits: { fileSize: 2000000 },
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, "public/images");
@@ -25,7 +25,7 @@ exports.upload = multer({
     filename: async function (req, file, cb) {
       try {
         //file is sup of 1Mo return error
-        if (req.headers["content-length"] > 1000000) {
+        if (req.headers["content-length"] > 2000000) {
           return cb(new Error("Your file exceeds 1Mo"), false);
         }
         //test if file exist and supprime file for save new file

@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
-interface Competence {
-  _id: String;
-  title: String;
-  text: String;
-}
+import { HttpClient } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Competence } from '../../models/competence.interface';
 
 @Component({
   selector: 'app-competences',
@@ -12,24 +10,19 @@ interface Competence {
   styleUrls: ['./competences.component.scss'],
 })
 export class CompetencesComponent implements OnInit {
-  public competences: Array<Competence>;
-  public competence: Competence;
+  public competences: Competence[];
+  public connected: boolean;
 
-  constructor() {
-    this.competence = {
-      _id: '1',
-      title: 'Front-end',
-      text: `Angular et VueJS sont pour moi de véritables coups de cœur. Passionné par ces technologies, j’ai commencé mon apprentissage en autodidacte, pour, par la suite, consolider mes acquis et continuer mon apprentissage dans les deux formations que j’ai suivies. Après quelques projets personnels, je suis prêt à développer des applications dynamiques et réactives en Angular ou avec VueJS.`,
-    };
-    this.competences = [
-      this.competence,
-      this.competence,
-      this.competence,
-      this.competence,
-    ];
-  }
+  constructor(private http: HttpClient, private cookie: CookieService) {}
 
   ngOnInit(): void {
-    console.log(this.competences);
+    this.connected = this.cookie.check('jwt');
+    this.http
+      .get<Competence[]>('http://localhost:3000/competences', {
+        withCredentials: true,
+      })
+      .subscribe((competencesList: Competence[]) => {
+        this.competences = competencesList;
+      });
   }
 }
