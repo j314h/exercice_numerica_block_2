@@ -1,9 +1,69 @@
-[
-  {
-    "_id": {
-      "$oid": "ObjectId"
-    },
-    "title": "",
-    "text": ""
-  }
-]
+[{
+  "_id": {
+    "$oid": "60015898a9e86950d9f9ddb4"
+  },
+  "imgs": [
+    "imgCompetence-1610989707251.svg",
+    "imgCompetence-1611002853266.svg"
+  ],
+  "title": "Langage",
+  "text": "Je maîtrise les langages, Html, Css, Javascript, TypeScript, cela me permet d’apprendre rapidement différents Frameworks dans le monde du web. J'ai une préférence pour Angular, par rapport à celui ci mes compétences me permette d'apprendre rapidement.",
+  "createdAt": {
+    "$date": "2021-01-15T08:55:52.490Z"
+  },
+  "updatedAt": {
+    "$date": "2021-01-18T20:48:54.259Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "600158f19d3f205153464f39"
+  },
+  "imgs": [
+    "imgCompetence-1610989957376.svg",
+    "imgCompetence-1610989966134.svg"
+  ],
+  "title": "Front End",
+  "text": "Angular et VueJS sont pour moi de véritables coups de cœur. Passionné par ces technologies, j’ai commencé mon apprentissage en autodidacte, pour, par la suite, consolider mes acquis et continuer mon apprentissage dans les deux formations que j’ai suivies. Après quelques projets personnels, je suis prêt à développer des applications dynamiques et réactives en Angular ou avec VueJS.",
+  "createdAt": {
+    "$date": "2021-01-15T08:57:21.656Z"
+  },
+  "updatedAt": {
+    "$date": "2021-01-18T17:12:46.140Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "600581aa062d1c74e98a32b4"
+  },
+  "imgs": [
+    "imgCompetence-1610990328320.svg",
+    "imgCompetence-1610990433071.png"
+  ],
+  "title": "Back End",
+  "text": "Je pratique le Frameworks ExpressJS. La réalisation d’API avec une architecture MVC m’a permis d’être à l’aise avec cette technologie. Je suis également un adepte de MongoDB, l'association de ExpressJS et Mongodb avec l'ORM Mongoose m'ont permis de creer des projets solide et stable.",
+  "createdAt": {
+    "$date": "2021-01-18T12:40:10.530Z"
+  },
+  "updatedAt": {
+    "$date": "2021-01-18T17:20:33.101Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6005e5a89f2d7bbdb1a27126"
+  },
+  "imgs": [
+    "imgCompetence-1610999227104.svg",
+    "imgCompetence-1610999238374.svg"
+  ],
+  "title": "Data",
+  "text": "Passionné par le NoSql avec MongoDB et l’ORM Mongoose, je sais également me servir de Sql, cela me permet de travailler sur divers environnements.",
+  "createdAt": {
+    "$date": "2021-01-18T19:46:48.459Z"
+  },
+  "updatedAt": {
+    "$date": "2021-01-18T19:47:18.381Z"
+  },
+  "__v": 0
+}]

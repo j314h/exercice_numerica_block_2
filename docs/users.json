@@ -1,11 +1,19 @@
 [
   {
     "_id": {
-      "$oid": "ObjectId"
+      "$oid": "600145b392b8a13d6515783a"
     },
-    "firstName": "",
-    "lastName": "",
-    "email": "",
-    "password": ""
+    "role": "root",
+    "firstName": "haimez",
+    "lastName": "john",
+    "email": "**************",
+    "password": "$2b$15$sS7/g0niCtCF9wrxumDNtuRjzbudVYD5R9iV80kzKpTVayrCWFJz6",
+    "createdAt": {
+      "$date": "2021-01-15T07:35:16.003Z"
+    },
+    "updatedAt": {
+      "$date": "2021-01-15T07:35:16.003Z"
+    },
+    "__v": 0
   }
 ]
