@@ -36,7 +36,7 @@ const competenceController = {
     try {
       //update competence
       const competence = await Competences.findByIdAndUpdate(
-        { _id: req.body.id },
+        { _id: req.body._id },
         {
           title: req.body.title,
           text: req.body.text,
@@ -52,6 +52,43 @@ const competenceController = {
       res.status(200).json(competences);
     } catch (e) {
       req.errorMessage = "Error update competence";
+      next(e);
+    }
+  },
+
+  deleteImgCompetence: async (req, res, next) => {
+    try {
+      console.log("deleteImgCompetence: ~ req", req.body.imgs);
+      //recover all competences for update front
+      const competences = await Competences.find();
+      //if error throw error
+      if (!competences) throw new Error('"An error has occurred update competence"');
+      res.status(200).json(competences);
+      res.end();
+    } catch (e) {
+      req.errorMessage = "Error delete img competence";
+      next(e);
+    }
+  },
+
+  //add or update img in tab imgs in competence target with id competence
+  updateImgCompetence: async (req, res, next) => {
+    try {
+      console.log(req);
+      console.log(req.body.id);
+      console.log(req.file);
+      const competence = await Competences.findByIdAndUpdate(
+        { _id: req.body.id },
+        { $push: { imgs: req.file.filename } },
+        { useFindAndModify: false, new: true }
+      );
+      const competences = await Competences.find();
+      //if error throw error
+      if (!competences) throw new Error("All competences not found");
+      res.status(200).json(competences);
+      res.end();
+    } catch (e) {
+      req.errorMessage = "Error update img competence";
       next(e);
     }
   },

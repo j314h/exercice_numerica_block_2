@@ -1,24 +1,55 @@
 import { Files } from './../../models/File.interface';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { Profil } from './../../models/profil.interface';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl } from '@angular/forms';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profil',
   templateUrl: './profil.component.html',
   styleUrls: ['./profil.component.scss'],
 })
-export class ProfilComponent implements OnInit {
+export class ProfilComponent implements OnInit, DoCheck {
   public profil: Profil;
   public imgProfil: FormData;
+  public cv: FormData;
   public profilImage: string;
+  public profilCv: SafeResourceUrl;
   public areaProfil: FormGroup;
   public connected: Boolean;
   public infoUpdateProfil: string;
+  public infoUpdateImage: string;
+  public infoUpdateCv: string;
+  public seeCv: Boolean = false;
 
-  constructor(private http: HttpClient, private cookie: CookieService) {}
+  constructor(
+    private http: HttpClient,
+    private cookie: CookieService,
+    private urlSecur: DomSanitizer
+  ) {}
+
+  //load cv in formData format
+  public loadCV(file) {
+    this.cv = new FormData();
+    this.cv.append('cv', file);
+  }
+
+  //upload and update cv profil
+  public updateCv() {
+    this.http
+      .post<any>('http://localhost:3000/file/cv', this.cv, {
+        withCredentials: true,
+      })
+      .subscribe((response: any) => {
+        this.profilCv = 'http://localhost:3000/images/' + response.fieldName;
+        this.infoUpdateCv = 'Update ok';
+      });
+    setTimeout(() => {
+      this.infoUpdateCv = '';
+    }, 4000);
+  }
 
   //update text for profil in api
   public updateProfil() {
@@ -40,13 +71,8 @@ export class ProfilComponent implements OnInit {
 
   //load image in formData format
   public loadImg(file) {
-    console.log('ProfilComponent ~ loadImg ~ file', file);
     this.imgProfil = new FormData();
     this.imgProfil.append('profil', file);
-    console.log(
-      'ProfilComponent ~ loadImg ~ this.imgProfil',
-      this.imgProfil.get('profil')
-    );
   }
 
   //upload and update image profil
@@ -57,7 +83,11 @@ export class ProfilComponent implements OnInit {
       })
       .subscribe((response: any) => {
         this.profilImage = 'http://localhost:3000/images/' + response.fieldName;
+        this.infoUpdateImage = 'Update ok';
       });
+    setTimeout(() => {
+      this.infoUpdateImage = '';
+    }, 4000);
   }
 
   //init form for update profil, execute in ngOnInit
@@ -68,6 +98,14 @@ export class ProfilComponent implements OnInit {
       textSecondaire: new FormControl(profil.textSecondaire),
       textConclusion: new FormControl(profil.textConclusion),
     });
+  }
+
+  public seeForCv() {
+    this.seeCv = !this.seeCv;
+  }
+
+  ngDoCheck() {
+    this.connected = this.cookie.check('jwt');
   }
 
   ngOnInit(): void {
@@ -83,8 +121,12 @@ export class ProfilComponent implements OnInit {
       .get<Files[]>('http://localhost:3000/files')
       .subscribe((files: Files[]) => {
         const imgProfil = files.find((el) => el.name === 'profil');
+        const cvProfil = files.find((el) => el.name === 'cv');
         this.profilImage =
           'http://localhost:3000/images/' + imgProfil.fieldName;
+        this.profilCv = this.urlSecur.bypassSecurityTrustResourceUrl(
+          'http://localhost:3000/images/' + cvProfil.fieldName
+        );
       });
 
     //check if user is connected

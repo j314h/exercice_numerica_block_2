@@ -1,5 +1,6 @@
 export interface Competence {
+  _id: string;
   title: string;
   text: string;
-  imgs: Array<string>;
+  imgs?: [string];
 }

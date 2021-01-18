@@ -5,7 +5,7 @@ const competenceSchema = Schema(
   {
     title: String,
     text: String,
-    imgs: Array,
+    imgs: { type: Array, default: [] },
   },
   {
     timestamps: true,

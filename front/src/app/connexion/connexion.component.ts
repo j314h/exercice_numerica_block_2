@@ -1,6 +1,6 @@
 import { Files } from './../models/File.interface';
 import { User } from './../models/user.interface';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -15,7 +15,7 @@ interface Disconnect {
   templateUrl: './connexion.component.html',
   styleUrls: ['./connexion.component.scss'],
 })
-export class ConnexionComponent implements OnInit {
+export class ConnexionComponent implements OnInit, DoCheck {
   public connected: Boolean;
   public user: User;
   public connexionUserForm: FormGroup;
@@ -53,6 +53,10 @@ export class ConnexionComponent implements OnInit {
         this.connected = response.connexion;
         this.user = null;
       });
+  }
+
+  ngDoCheck() {
+    this.connected = this.cookie.check('jwt');
   }
 
   ngOnInit(): void {

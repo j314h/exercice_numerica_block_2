@@ -2,6 +2,7 @@
   <!-- sub title -->
   <h2>Compétences</h2>
   <div class="containe_competence">
+    <!-- if user not connected -->
     <div *ngIf="!connected">
       <!-- box competence boucle -->
       <div
@@ -13,9 +14,11 @@
           <h3>{{ item.title }}</h3>
           <div class="competence">
             <div class="box_img">
-              <img src="../../../assets/img/angular-seeklogo.com_.svg" />
-              <img src="../../../assets/img/vuejs.svg" />
-              <img src="../../../assets/img/vuejs.svg" />
+              <div *ngFor="let image of item.imgs">
+                <img
+                  [src]="'http://localhost:3000/imagescompetences/' + image"
+                />
+              </div>
             </div>
             <p>
               {{ item.text }}
@@ -28,24 +31,65 @@
     <!-- see if user is connected for update competence -->
     <div *ngIf="connected">
       <div
-        *ngFor="let item of competences; let index = index"
+        *ngFor="
+          let competenceFormGroup of listCompetenceFormGroupe;
+          let index = index
+        "
         class="box_competence cbglayoutd"
       >
         <!-- competence -->
-        <div class="block_competence">
-          <h3>{{ item.title }}</h3>
-          <div class="competence">
-            <div class="box_img">
-              <img src="../../../assets/img/angular-seeklogo.com_.svg" />
-              <img src="../../../assets/img/vuejs.svg" />
-              <img src="../../../assets/img/vuejs.svg" />
+        <form
+          (ngSubmit)="updateCompetence($event, index)"
+          [formGroup]="competenceFormGroup"
+        >
+          <div class="block_competence">
+            <input formControlName="title" />
+            <div class="competence">
+              <div class="box_img">
+                <div
+                  class="box_img_update"
+                  *ngFor="let image of competenceFormGroup.value.imgs"
+                >
+                  <img
+                    [src]="'http://localhost:3000/imagescompetences/' + image"
+                  />
+                  <form (ngSubmit)="deleteImg(i)">
+                    <input
+                      name="i"
+                      type="hidden"
+                      [ngModel]="image"
+                      [value]="image"
+                      #i="ngModel"
+                    />
+                    <button class="ctorange">Supprimer</button>
+                  </form>
+                </div>
+
+                <form (ngSubmit)="updateFileCompetence(competenceFormGroup)">
+                  <div>
+                    <label>Ajouter une image</label>
+                  </div>
+                  <input
+                    type="file"
+                    (change)="loadFile($event.target.files[0])"
+                  />
+                  <div>
+                    <button class="ctorange btn_add_img">Ajouter</button>
+                  </div>
+                </form>
+              </div>
+              <p>
+                <textarea rows="20" cols="50" formControlName="text"></textarea>
+              </p>
             </div>
-            <p>
-              {{ item.text }}
-            </p>
           </div>
-        </div>
+          <div class="box_btn_modifier_competence">
+            <button class="ctorange">Modifier</button>
+          </div>
+        </form>
       </div>
+
+      <!--  -->
     </div>
   </div>
 </div>

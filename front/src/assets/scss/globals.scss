@@ -37,6 +37,9 @@ button {
   font-size: 1.3rem;
   font-family: "Roboto", sans-serif;
 }
+button:hover {
+  cursor: pointer;
+}
 .upper {
   text-transform: uppercase;
 }
@@ -51,4 +54,8 @@ button {
 
 ::placeholder {
   color: #e8421896;
+}
+.text_info_update {
+  color: #00ff77;
+  height: 50px;
 }

@@ -14,6 +14,17 @@ const uploadController = {
     }
   },
 
+  uploadCv: async (req, res, next) => {
+    try {
+      //update or create file
+      const fileUpdate = await changeOrCreateValueForFile(req);
+      console.log("Create or update logo profil is ok");
+    } catch (e) {
+      req.errorMessage = "Update or create field image error";
+      next(e);
+    }
+  },
+
   getAllImg: async (req, res, next) => {
     try {
       const imgs = await Files.find();

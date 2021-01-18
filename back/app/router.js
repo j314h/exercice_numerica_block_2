@@ -7,7 +7,7 @@ const uploadController = require("./controllers/uploadController");
 const multer = require("multer");
 const noMulter = multer().none();
 //middleware multer
-const { upload } = require("./middlewares/multer");
+const { upload, uploadFileCompetence } = require("./middlewares/multer");
 
 //middleware verify acces administrateur
 const { verifUserConnect, verifUserAccesRoot } = require("./middlewares/verifyAccess.conf");
@@ -31,7 +31,22 @@ router.get("/info-profil", profilController.getAllInfoProfil);
 //create competence
 router.post("/create-competence", verifUserConnect, verifUserAccesRoot, competenceController.createCompetence);
 //update competence
-router.post("/update-competence", verifUserConnect, verifUserAccesRoot, competenceController.updateCompetence);
+router.post(
+  "/update-competence",
+  noMulter,
+  verifUserConnect,
+  verifUserAccesRoot,
+  competenceController.updateCompetence
+);
+//add or update img competence
+router.post(
+  "/imgs-competence",
+  verifUserConnect,
+  verifUserAccesRoot,
+  uploadFileCompetence.single("imgCompetence"),
+  competenceController.updateImgCompetence
+);
+router.post("/delete-imgs", noMulter, verifUserConnect, verifUserAccesRoot, competenceController.deleteImgCompetence);
 //delete competence
 router.get("/delete-competence/:id", verifUserConnect, verifUserAccesRoot, competenceController.deleteCompetence);
 //get all competence
@@ -48,5 +63,7 @@ router.post(
   upload.single("profil"),
   uploadController.uploadProfil
 );
+//upload cv
+router.post("/file/cv", verifUserConnect, verifUserAccesRoot, upload.single("cv"), uploadController.uploadCv);
 
 module.exports = router;

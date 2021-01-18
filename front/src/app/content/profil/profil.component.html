@@ -15,18 +15,23 @@
         <button class="ctaction btn_modifier">Envoyer</button>
       </div>
     </form>
+    <div>
+      <p class="text_info_update">{{ infoUpdateImage }}</p>
+    </div>
   </div>
 
-  <!-- text profil -->
-  <p *ngIf="profil && !connected">
-    {{ profil.textPrincipal }}
-  </p>
-  <p *ngIf="profil && !connected" class="para2">
-    {{ profil.textSecondaire }}
-  </p>
-  <p *ngIf="profil && !connected">
-    {{ profil.textConclusion }}
-  </p>
+  <div class="box_info_profil" *ngIf="!seeCv">
+    <!-- text profil -->
+    <p *ngIf="profil && !connected">
+      {{ profil.textPrincipal }}
+    </p>
+    <p *ngIf="profil && !connected" class="para2">
+      {{ profil.textSecondaire }}
+    </p>
+    <p *ngIf="profil && !connected">
+      {{ profil.textConclusion }}
+    </p>
+  </div>
 
   <!-- if connected is true see you textarea for change infosmation of profil -->
   <div *ngIf="profil && connected">
@@ -59,12 +64,44 @@
         <button class="ctaction btn_modifier">Modifier</button>
       </div>
       <div>
-        <p>{{ infoUpdateProfil }}</p>
+        <p class="text_info_update">{{ infoUpdateProfil }}</p>
       </div>
     </form>
   </div>
   <!-- button access CV pdf -->
   <div class="box_pdf_cv">
-    <a class="ctaction" href="#">Voir mon CV</a>
+    <a
+      *ngIf="!seeCv && !connected"
+      (click)="seeForCv()"
+      class="ctaction"
+      href="#"
+      >Voir mon CV</a
+    >
+    <a
+      *ngIf="seeCv && !connected"
+      (click)="seeForCv()"
+      class="ctaction"
+      href="#"
+      >Fermer mon CV</a
+    >
+  </div>
+
+  <!-- cv in balise for upload or see -->
+  <div *ngIf="seeCv && !connected">
+    <embed [src]="profilCv" width="800" height="1200" type="application/pdf" />
+  </div>
+
+  <!-- update cv profil -->
+  <div class="input_img" *ngIf="profil && connected">
+    <form (ngSubmit)="updateCv()">
+      <label class="ctorange">Modifier votre CV</label>
+      <input (input)="loadCV($event.target.files[0])" type="file" />
+      <div>
+        <button class="ctaction btn_modifier">Envoyer</button>
+      </div>
+    </form>
+    <div>
+      <p class="text_info_update">{{ infoUpdateCv }}</p>
+    </div>
   </div>
 </div>

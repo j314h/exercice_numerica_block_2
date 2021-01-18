@@ -14,7 +14,7 @@
 .box_competence {
   border-radius: 10px;
   padding: 30px;
-  max-width: 600px;
+  max-width: fit-content;
   margin-bottom: 70px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -22,6 +22,7 @@
   -o-border-radius: 10px;
 }
 .block_competence {
+  max-width: fit-content;
 }
 h2 {
   font-size: 4rem;
@@ -41,7 +42,7 @@ h3 {
 }
 .competence {
   display: flex;
-  max-width: 600px;
+  max-width: fit-content;
   width: 100%;
 }
 .competence img {
@@ -51,5 +52,29 @@ h3 {
 }
 .competence p {
   flex: 2;
+  width: 600px;
   font-size: 1.8rem;
+}
+.box_btn_modifier_competence {
+  text-align: right;
+}
+.box_btn_modifier_competence button {
+  padding: 20px 0;
+  font-size: 1.6rem;
+}
+.btn_add_img {
+  padding: 20px 0;
+  font-size: 1.6rem;
+}
+.box_img_update {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  margin-right: 20px;
+}
+.box_img_update img {
+  margin: 0;
+  margin-bottom: 10px;
 }

@@ -61,6 +61,12 @@ header {
   align-items: center;
   margin-bottom: 20px;
 }
+.btn_disconnect {
+  cursor: pointer;
+}
+.btn_disconnect:hover svg path {
+  fill: #e84118;
+}
 /**********/
 
 /* footer menu */
