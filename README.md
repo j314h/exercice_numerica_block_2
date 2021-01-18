@@ -5,7 +5,7 @@
 ### _Data_
 
 - Voici les documents de ma base de donnée  
-   elle à été réaliser en MONGODB, voici la liste des collections(nom équivalent aux tables en SQL)
+   elle à été réalisé en MONGODB, voici la liste des collections(nom équivalent aux tables en SQL)
 
   - users.json => regroupe les utilisateurs administrateurs pouvant modifier le site.
     ![user](https://github.com/j314h/portfolio/blob/bloc-2/docs/img_bdd/users-collection.png)
@@ -13,7 +13,7 @@
     ![themeColor](https://github.com/j314h/portfolio/blob/bloc-2/docs/img_bdd/themeColor-collection.png)
   - profils.json => celui ci contient tout le text de la page profil du site  
     ![profils](https://github.com/j314h/portfolio/blob/bloc-2/docs/img_bdd/profils-collection.png)
-  - imgs.json => vous retrouverai dans cette collection les images ou fichier du site  
+  - imgs.json => vous retrouverai dans cette collection les images ou fichiers du site  
     ![imgs](https://github.com/j314h/portfolio/blob/bloc-2/docs/img_bdd/imgs-collection.png)
   - competences.json => la partie competence, contient toute les données de la page compétence  
     ![competences](https://github.com/j314h/portfolio/blob/bloc-2/docs/img_bdd/competence-collection.png)  
@@ -38,7 +38,7 @@
     - Pour les appel API j'ai donc utilisé HTTPCLIENTMODULE
     - Pour les formulaire j'ai fais le choix d'utiliser FORMMODULE avec FORMGROUPE ansi que FORMCONTROLE.
     - J'utilise également ngx-cookie-service qui me sert à vérifier le cookie présent ou non que mon backend renvoie apres connexion à celui-ci (connexion administrateur).
-    - Comme je l'ai dis plus haut, il me reste encore du travail pour améliorer ce projet coter front, comme par exemple intégrer un systeme de service avec lequel je pourrai gerer mieux mes appels à l'API et encore d'autres taches, les commentaires du code seront rajoutés prochainement. Le bloc 2 portant sur le backend, je pourrai revenir travailler sur le front par la suite.
+    - Comme je l'ai dis plus haut, il me reste encore du travail pour améliorer ce projet coté front, comme par exemple intégrer un systeme de service avec lequel je pourrai gerer mieux mes appels à l'API et encore d'autres taches, les commentaires du code seront rajoutés prochainement. Le bloc 2 portant sur le backend, je pourrai revenir travailler sur le front par la suite.
 
 ### _les compétences réalisées_
 
@@ -57,7 +57,7 @@
 
 ### 2 videos de présentation
 
-- démarrage des serveur + connexion utilisateur + démonstration du token + modification de la partie profil
+- démarrage des serveurs + connexion utilisateur + démonstration du token + modification de la partie profil  
   [lien rapide téléchargement video 1](https://github.com/j314h/portfolio/blob/bloc-2/movies/pr%C3%A9sentation-token.mkv)
 - modification, creation de la partie compétence  
   [lien rapide téléchargement video 2](https://github.com/j314h/portfolio/blob/bloc-2/movies/creation-competence..mkv)
