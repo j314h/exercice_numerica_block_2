@@ -5,10 +5,10 @@
 ### _Data_
 
 - Voici les documents de ma base de donnée  
-  elle à été réaliser en MONGODB, voici la liste des collections(nom équivalent aux tables en SQL)
+   elle à été réaliser en MONGODB, voici la liste des collections(nom équivalent aux tables en SQL)
 
   - users.json => regroupe les utilisateurs administrateurs pouvant modifier le site.
-
+    ![user](https://github.com/j314h/portfolio/blob/bloc-2/docs/img_bdd/users-collection.png)
   - themeColor.json => cette collection servira pour un version 2 du site qui comprendra un systeme de mode dark pour changer les couleurs du sites
   - profils.json => celui ci contient tout le text de la page profil du site
   - imgs.json => vous retrouverai dans cette collection les images ou fichier du site
