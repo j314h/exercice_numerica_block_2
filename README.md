@@ -9,11 +9,15 @@
 
   - users.json => regroupe les utilisateurs administrateurs pouvant modifier le site.
     ![user](https://github.com/j314h/portfolio/blob/bloc-2/docs/img_bdd/users-collection.png)
-  - themeColor.json => cette collection servira pour un version 2 du site qui comprendra un systeme de mode dark pour changer les couleurs du sites
-  - profils.json => celui ci contient tout le text de la page profil du site
-  - imgs.json => vous retrouverai dans cette collection les images ou fichier du site
+  - themeColor.json => cette collection servira pour un version 2 du site qui comprendra un systeme de mode dark pour changer les couleurs du sites  
+    ![themeColor](https://github.com/j314h/portfolio/blob/bloc-2/docs/img_bdd/themeColor-collection.png)
+  - profils.json => celui ci contient tout le text de la page profil du site  
+    ![profils](https://github.com/j314h/portfolio/blob/bloc-2/docs/img_bdd/profils-collection.png)
+  - imgs.json => vous retrouverai dans cette collection les images ou fichier du site  
+    ![imgs](https://github.com/j314h/portfolio/blob/bloc-2/docs/img_bdd/imgs-collection.png)
   - competences.json => la partie competence, contient toute les données de la page compétence  
-    \*Vous pouvez remarquer qu'il en manque, par un soucis de temps, avec tout ce qu'il y a ci-dessus toute les competences sont réalisées.
+    ![competences](https://github.com/j314h/portfolio/blob/bloc-2/docs/img_bdd/competence-collection.png)  
+     \*Vous pouvez remarquer qu'il en manque, par un soucis de temps, avec tout ce qu'il y a ci-dessus toute les competences sont réalisées.
 
 ### _Structure_
 
