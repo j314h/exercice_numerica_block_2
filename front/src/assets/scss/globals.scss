@@ -16,6 +16,7 @@ body {
 }
 body {
   font-size: 1.6rem;
+  position: relative;
 }
 #root {
   width: 100%;
@@ -39,6 +40,15 @@ button {
 }
 button:hover {
   cursor: pointer;
+}
+button:focus {
+  outline: none;
+}
+input:focus {
+  outline: none;
+}
+textarea:focus {
+  outline: none;
 }
 .upper {
   text-transform: uppercase;

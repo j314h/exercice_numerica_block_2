@@ -56,9 +56,17 @@ const competenceController = {
     }
   },
 
+  //delete image in competence data base
   deleteImgCompetence: async (req, res, next) => {
     try {
-      console.log("deleteImgCompetence: ~ req", req.body.imgs);
+      const competence = await Competences.findById({ _id: req.body.id });
+      const newCompetenceImg = competence.imgs.filter((el) => el !== req.body.imgs);
+      console.log("deleteImgCompetence: ~ newCompetence", newCompetenceImg);
+      await Competences.findByIdAndUpdate(
+        { _id: req.body.id },
+        { imgs: newCompetenceImg },
+        { useFindAndModify: false, new: true }
+      );
       //recover all competences for update front
       const competences = await Competences.find();
       //if error throw error

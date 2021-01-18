@@ -53,13 +53,20 @@
                   <img
                     [src]="'http://localhost:3000/imagescompetences/' + image"
                   />
-                  <form (ngSubmit)="deleteImg(i)">
+                  <form (ngSubmit)="deleteImg(i, id)">
                     <input
                       name="i"
                       type="hidden"
                       [ngModel]="image"
                       [value]="image"
                       #i="ngModel"
+                    />
+                    <input
+                      name="id"
+                      type="hidden"
+                      [ngModel]="competenceFormGroup.value._id"
+                      [value]="competenceFormGroup.value._id"
+                      #id="ngModel"
                     />
                     <button class="ctorange">Supprimer</button>
                   </form>
@@ -87,9 +94,53 @@
             <button class="ctorange">Modifier</button>
           </div>
         </form>
+        <button
+          (click)="deleteCompetence(competenceFormGroup.value._id)"
+          class="ctorange"
+        >
+          Supprimer
+        </button>
       </div>
 
-      <!--  -->
+      <!-- create new competence -->
+      <div class="box_create_competence" *ngIf="connected && create">
+        <div class="box_competence cbglayoutd">
+          <!-- competence -->
+          <form
+            (ngSubmit)="createCompetence()"
+            [formGroup]="newCompetenceFormGroup"
+          >
+            <div class="block_competence">
+              <input
+                placeholder="Ecrivez votre titre"
+                formControlName="title"
+              />
+              <div class="competence">
+                <p>
+                  <textarea
+                    rows="20"
+                    cols="50"
+                    placeholder="Décrivez votre compétence"
+                    formControlName="text"
+                  ></textarea>
+                </p>
+              </div>
+            </div>
+            <div class="box_btn_modifier_competence">
+              <button class="ctorange">Ajouter</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
+
+    <!-- btn add create new competence -->
+    <div *ngIf="connected" class="add_competence">
+      <button (click)="seeCreateCompetence()" class="ctorange btn_add_img">
+        {{ titleBtnCreate }}
+      </button>
+    </div>
+
+    <!--  -->
   </div>
 </div>
