@@ -58,4 +58,17 @@
 ### 2 videos de présentation
 
 - démarrage des serveur + connexion utilisateur + démonstration du token + modification de la partie profil
-- modification, creation de la partie compétence
+  [lien rapide téléchargement video 1](https://github.com/j314h/portfolio/blob/bloc-2/movies/pr%C3%A9sentation-token.mkv)
+- modification, creation de la partie compétence  
+  [lien rapide téléchargement video 2](https://github.com/j314h/portfolio/blob/bloc-2/movies/creation-competence..mkv)
+
+_Explications en image pour télécharger les vidéos du site_
+
+Cliquer sur le dossier movies
+![movie](https://github.com/j314h/portfolio/blob/bloc-2/docs/img-info-movies/Capture%20d%E2%80%99%C3%A9cran%20du%202021-01-18%2023-28-12.png)
+
+Cliquer sur la video
+![clique sur la vidéo](https://github.com/j314h/portfolio/blob/bloc-2/docs/img-info-movies/Capture%20d%E2%80%99%C3%A9cran%20du%202021-01-18%2023-28-36.png)
+
+Cliquer sur download => elles sont au format MKV, avec un lecteur comme quicktime ou VLC vous pourrez lire sans probleme ce format
+![download](https://github.com/j314h/portfolio/blob/bloc-2/docs/img-info-movies/Capture%20d%E2%80%99%C3%A9cran%20du%202021-01-18%2023-29-01.png)
