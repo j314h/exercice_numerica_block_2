@@ -25,9 +25,12 @@
 
   - 1 back :
 
-    - regroupe tout le backend de l'application, il a été réalisé en ExpressJS avec Moogose comme ORM pour acceder à la base de donnée mongoDB.
-    - Il est totalement sécurisé, il utilise la technologie cors pour restreindre son acces, puis la technologie jwt est utiliser ici, c'est à dire que la connexion utilisateur admin est sécurisé par un token totalement avec une journée de validation (passé ce délais le token n'est plus valide et au chargement de la page le token est supprimé).
-    - Sécurité total sur le mot de passe de l'utilisateur, vous pouvez voir que dans la collection users.json, je n'ai pas caché le mot de passe, éffectivement ce qui apparait dans la collection est un mot de passe hash avec une clef secret pour etre encore plus sécurisé (par rapport au besoin de mes études une fausse clef secrete à été place dans le backend, pour pouvoir montrer mon utilisation tout en sécurisant mon site.)
+    - regroupe tout le backend de l'application, il a été réalisé en ExpressJS avec Moogose comme ORM pour acceder à la base de donnée mongoDB.  
+       ![connexion](https://github.com/j314h/portfolio/blob/bloc-2/docs/img_structure/connexion-database.png)
+    - Il est totalement sécurisé, il utilise la technologie cors pour restreindre son acces, puis la technologie jwt est utiliser ici, c'est à dire que la connexion utilisateur admin est sécurisé par un token totalement avec une journée de validation (passé ce délais le token n'est plus valide et au chargement de la page le token est supprimé).  
+       ![cors](https://github.com/j314h/portfolio/blob/bloc-2/docs/img_structure/cors.png)
+    - Sécurité total sur le mot de passe de l'utilisateur, vous pouvez voir que dans la collection users.json, je n'ai pas caché le mot de passe, éffectivement ce qui apparait dans la collection est un mot de passe hash avec une clef secret pour etre encore plus sécurisé (par rapport au besoin de mes études une fausse clef secrete à été place dans le backend, pour pouvoir montrer mon utilisation tout en sécurisant mon site.)  
+       ![hash](https://github.com/j314h/portfolio/blob/bloc-2/docs/img_structure/hash-password.png)
 
   - 1 front :
     - Créé en Angular, pour mon apprentissage de ce framework j'ai décidé de re-créer un front avec cette technologie, je voudrais me spécialisé en Angular d'où ce choix, je l'ai appris et utilisé en 1 semaine, je n'ai donc pas du coder tout parfaitement et je sais que je peux factorisé mon code pour une meilleur maintenabilité, mais le temps à été mon énnemis car d'autre projet sont en cours, j'ai donc fais le choix de revenir dessus par la suite pour faire un travail plus propre.
