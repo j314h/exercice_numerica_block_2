@@ -1,0 +1,146 @@
+<div class="global_box_competence">
+  <!-- sub title -->
+  <h2>Compétences</h2>
+  <div class="containe_competence">
+    <!-- if user not connected -->
+    <div *ngIf="!connected">
+      <!-- box competence boucle -->
+      <div
+        *ngFor="let item of competences; let index = index"
+        class="box_competence cbglayoutd"
+      >
+        <!-- competence -->
+        <div class="block_competence">
+          <h3>{{ item.title }}</h3>
+          <div class="competence">
+            <div class="box_img">
+              <div *ngFor="let image of item.imgs">
+                <img
+                  [src]="'http://localhost:3000/imagescompetences/' + image"
+                />
+              </div>
+            </div>
+            <p>
+              {{ item.text }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- see if user is connected for update competence -->
+    <div *ngIf="connected">
+      <div
+        *ngFor="
+          let competenceFormGroup of listCompetenceFormGroupe;
+          let index = index
+        "
+        class="box_competence cbglayoutd"
+      >
+        <!-- competence -->
+        <form
+          (ngSubmit)="updateCompetence($event, index)"
+          [formGroup]="competenceFormGroup"
+        >
+          <div class="block_competence">
+            <input formControlName="title" />
+            <div class="competence">
+              <div class="box_img">
+                <div
+                  class="box_img_update"
+                  *ngFor="let image of competenceFormGroup.value.imgs"
+                >
+                  <img
+                    [src]="'http://localhost:3000/imagescompetences/' + image"
+                  />
+                  <form (ngSubmit)="deleteImg(i, id)">
+                    <input
+                      name="i"
+                      type="hidden"
+                      [ngModel]="image"
+                      [value]="image"
+                      #i="ngModel"
+                    />
+                    <input
+                      name="id"
+                      type="hidden"
+                      [ngModel]="competenceFormGroup.value._id"
+                      [value]="competenceFormGroup.value._id"
+                      #id="ngModel"
+                    />
+                    <button class="ctorange">Supprimer</button>
+                  </form>
+                </div>
+
+                <form (ngSubmit)="updateFileCompetence(competenceFormGroup)">
+                  <div>
+                    <label>Ajouter une image</label>
+                  </div>
+                  <input
+                    type="file"
+                    (change)="loadFile($event.target.files[0])"
+                  />
+                  <div>
+                    <button class="ctorange btn_add_img">Ajouter</button>
+                  </div>
+                </form>
+              </div>
+              <p>
+                <textarea rows="20" cols="50" formControlName="text"></textarea>
+              </p>
+            </div>
+          </div>
+          <div class="box_btn_modifier_competence">
+            <button class="ctorange">Modifier</button>
+          </div>
+        </form>
+        <button
+          (click)="deleteCompetence(competenceFormGroup.value._id)"
+          class="ctorange"
+        >
+          Supprimer
+        </button>
+      </div>
+
+      <!-- create new competence -->
+      <div class="box_create_competence" *ngIf="connected && create">
+        <div class="box_competence cbglayoutd">
+          <!-- competence -->
+          <form
+            (ngSubmit)="createCompetence()"
+            [formGroup]="newCompetenceFormGroup"
+          >
+            <div class="block_competence">
+              <input
+                placeholder="Ecrivez votre titre"
+                formControlName="title"
+              />
+              <div class="competence">
+                <p>
+                  <textarea
+                    rows="20"
+                    cols="50"
+                    placeholder="Décrivez votre compétence"
+                    formControlName="text"
+                  ></textarea>
+                </p>
+              </div>
+            </div>
+            <div class="box_btn_modifier_competence">
+              <button class="ctorange">Ajouter</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- btn add create new competence -->
+    <div *ngIf="connected" class="add_competence">
+      <button (click)="seeCreateCompetence()" class="ctorange btn_add_img">
+        {{ titleBtnCreate }}
+      </button>
+    </div>
+
+    <!--  -->
+  </div>
+</div>

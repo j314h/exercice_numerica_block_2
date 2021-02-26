@@ -1,0 +1,55 @@
+<div class="box_connexion">
+  <div *ngIf="!connected">
+    <!-- form for connexion user -->
+    <form (ngSubmit)="connexion()" [formGroup]="connexionUserForm">
+      <div class="box_img">
+        <img src="../../assets/img/user-no-connected.jpg" />
+        <h6>Administrateur</h6>
+      </div>
+      <div>
+        <input
+          type="email"
+          formControlName="email"
+          class="input"
+          placeholder="Identifiant"
+          required
+        />
+      </div>
+      <div>
+        <input
+          type="password"
+          formControlName="password"
+          class="input"
+          placeholder="Mot de passe"
+          required
+        />
+      </div>
+      <div class="box_btn_connexion">
+        <button class="ctaction btn_connexion upper">Connexion</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- this bloc, appear in DOM, juste user is connected -->
+  <div class="box_user_connected" *ngIf="user && connected">
+    <div>
+      <img [src]="profilImage" />
+      <h6>{{ user.firstName }} {{ user.lastName }}</h6>
+    </div>
+    <div class="box_info user">
+      <p>Role : {{ user.role }}</p>
+      <p>email : {{ user.email }}</p>
+      <p>Mot de passe : ****</p>
+    </div>
+    <p class="text_info_build">
+      les fonctionnalitées "modifier mot de passe" et "modifier email" sont en
+      cours de construction
+    </p>
+    <div>
+      <button (click)="deconnexion()" class="ctaction btn_connexion upper">
+        Deconnexion
+      </button>
+    </div>
+    <!-- add form for update email end password in version 2 -->
+  </div>
+</div>

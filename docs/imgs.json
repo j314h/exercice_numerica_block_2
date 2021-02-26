@@ -1,0 +1,29 @@
+[{
+  "_id": {
+    "$oid": "6002bee9c1f9491deee07a73"
+  },
+  "name": "profil",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2021-01-16T10:24:41.543Z"
+  },
+  "fieldName": "profil-1610999416944.png",
+  "src": "public/images/profil-1610999416944.png",
+  "updatedAt": {
+    "$date": "2021-01-18T19:50:16.970Z"
+  }
+},{
+  "_id": {
+    "$oid": "6003f82b3b1ef8b2c7081ab7"
+  },
+  "name": "cv",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2021-01-17T08:41:15.301Z"
+  },
+  "fieldName": "cv-1610875760545.pdf",
+  "src": "public/images/cv-1610875760545.pdf",
+  "updatedAt": {
+    "$date": "2021-01-17T09:29:20.563Z"
+  }
+}]

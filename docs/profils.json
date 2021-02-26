@@ -1,0 +1,11 @@
+[{
+  "_id": {
+    "$oid": "60014b3566000918662e686e"
+  },
+  "textPrincipal": "Après une formation full Stack Javascript de 3 mois dans le développement web à l’école Oclock en télé présentiel. J’ai continué ma formation chez SEM Numerica pour une durée de 6 mois. Actuellement en pleine formation je suis à la recherche d’un stage de 2 mois afin d’obtenir mon titre Professionnel de développeur web et web mobile.",
+  "textSecondaire": "Je suis quelqu'un de motivé et curieux faisant toujours preuve d'une grande détermination. Explorer de nouvelles opportunités, apprendre de nouvelles compétences, rencontrer de nouvelles personnes, tout cela a toujours été naturel chez moi, aussi bien dans la sphère personnelle que professionnelle. Étant autodidacte en développement lors de mes temps libres, j'ai décidé de faire une reconversion afin d'exercer un métier que j'aime et qui me passionne.",
+  "textConclusion": "J'ai commencé ma reconversion professionnelle par la formation Full-Stack JS chez Oclock d'une durée de 3 mois. Cette formation fut un véritable succès, j'ai pu approfondir des notions qui on été difficiles à assimiler quand on apprend seul. Suite à cela, je suis rentré chez SEM Numerica pour découvrir d'autres technologies, faire évoluer mes compétences en développement et en gestion de projet afin d'obtenir mon titre professionnel \"développeur web et web mobile\".",
+  "updatedAt": {
+    "$date": "2021-01-18T19:50:21.995Z"
+  }
+}]
